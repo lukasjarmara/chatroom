@@ -5,13 +5,14 @@ import Room from "./Components/Room/Room.tsx";
 
 function App() {
   const [room, setRoom] = React.useState(0);
-  const handleCallback = (childprop) => {
+  const useCallback = (childprop) => {
     setRoom(childprop);
   };
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Choose handleCallback={handleCallback} />} />
+        <Route path="/" element={<Choose useCallback={useCallback} />} />
         <Route path={`/room-${room}`} element={<Room roomId={room} />} />
       </Routes>
     </BrowserRouter>

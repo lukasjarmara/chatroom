@@ -4,10 +4,10 @@ interface RoomProps {
   roomId: number;
 }
 
-const Room: React.FC<RoomProps> = (roomId) => {
+const Room: React.FC<RoomProps> = ({ roomId }) => {
   return (
     <div>
-      <p></p>
+      <p>{roomId}</p>
     </div>
   );
 };
