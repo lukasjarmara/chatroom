@@ -10,7 +10,7 @@ const Choose: React.FC<ChooseProps> = ({ useCallback }) => {
 
   const useSubmit = (e) => {
     e.preventDefault();
-    navigate(`/room-${room}`);
+    navigate(`/room/${room}`);
     useCallback(room);
   };
   return (
