@@ -5,7 +5,7 @@ import Room from "./Components/Room/Room.tsx";
 
 function App() {
   const [room, setRoom] = React.useState(0);
-  const [user, setUser] = React.useState("");
+  const [user, setUser] = React.useState("default");
   const useCallback = (childprop) => {
     setRoom(childprop.room);
     setUser(childprop.user);
@@ -15,10 +15,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Choose useCallback={useCallback} />} />
-        <Route
-          path={`/room/:roomId`}
-          element={<Room roomId={room} user={user} />}
-        />
+        <Route path={`/room/:roomId`} element={<Room />} />
       </Routes>
     </BrowserRouter>
   );

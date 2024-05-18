@@ -2,16 +2,18 @@ import * as React from "react";
 import { useNavigate } from "react-router-dom";
 
 interface ChooseProps {
-  useCallback: (room: number) => void;
+  useCallback: (room: number, user: string) => void;
 }
 const Choose: React.FC<ChooseProps> = ({ useCallback }) => {
   const [room, setRoom] = React.useState(0);
+  const [user, setUser] = React.useState("Test");
+
   const navigate = useNavigate();
 
   const useSubmit = (e) => {
     e.preventDefault();
-    navigate(`/room/${room}`);
-    useCallback(room);
+    navigate(`/room/${room}?user=${user}`);
+    useCallback(room, user);
   };
   return (
     <div className="w-screen h-screen flex justify-center items-center flex-col">
