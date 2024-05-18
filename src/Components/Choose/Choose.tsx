@@ -1,19 +1,15 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 
-interface ChooseProps {
-  useCallback: (room: number, user: string) => void;
-}
-const Choose: React.FC<ChooseProps> = ({ useCallback }) => {
+const Choose: React.FC = () => {
   const [room, setRoom] = React.useState(0);
-  const [user, setUser] = React.useState("Test");
+  const [user, setUser] = React.useState("");
 
   const navigate = useNavigate();
 
   const useSubmit = (e) => {
     e.preventDefault();
     navigate(`/room/${room}?user=${user}`);
-    useCallback(room, user);
   };
   return (
     <div className="w-screen h-screen flex justify-center items-center flex-col">
@@ -27,6 +23,14 @@ const Choose: React.FC<ChooseProps> = ({ useCallback }) => {
           <button type="button" onClick={(e) => setRoom(room - 1)}>
             -
           </button>
+        </div>
+        <div>
+          {" "}
+          <input
+            type="text"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+          />
         </div>
         <button type="submit">Chat</button>
       </form>

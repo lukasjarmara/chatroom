@@ -19,5 +19,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const db = getDatabase(app);
-export const auth = getAuth(app);
+const auth = getAuth(app);
+export const db = getDatabase(
+  app,
+  "https://chatroom-596d1-default-rtdb.europe-west1.firebasedatabase.app"
+);

@@ -4,17 +4,10 @@ import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import Room from "./Components/Room/Room.tsx";
 
 function App() {
-  const [room, setRoom] = React.useState(0);
-  const [user, setUser] = React.useState("default");
-  const useCallback = (childprop) => {
-    setRoom(childprop.room);
-    setUser(childprop.user);
-  };
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Choose useCallback={useCallback} />} />
+        <Route path="/" element={<Choose />} />
         <Route path={`/room/:roomId`} element={<Room />} />
       </Routes>
     </BrowserRouter>
