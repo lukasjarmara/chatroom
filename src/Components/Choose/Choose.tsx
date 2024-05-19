@@ -25,7 +25,9 @@ const Choose: React.FC = () => {
           </button>
         </div>
         <div>
+          <label htmlFor="userInput">Username</label>
           <input
+            id="userInput"
             type="text"
             value={user}
             onChange={(e) => setUser(e.target.value)}

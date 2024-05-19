@@ -24,6 +24,11 @@ const Room: React.FC = () => {
       setIsLoading(false);
     });
   }, [roomId, location]);
+  React.useEffect(() => {
+    if (messages.length > 0) {
+      setLastMessage(messages.length);
+    }
+  }, [messages]);
   const handleSubmit = (e) => {
     e.preventDefault();
     set(ref(db, `/room-${roomId}/message-${lastMessage + 1}`), {
@@ -46,7 +51,7 @@ const Room: React.FC = () => {
             <div>
               {messages.map((message, index) => (
                 <div key={index}>
-                  <h4>{message.user}</h4>
+                  <label>{message.user}</label>
                   <p> {message.message}</p>
                 </div>
               ))}
