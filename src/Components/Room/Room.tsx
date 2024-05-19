@@ -27,7 +27,7 @@ const Room: React.FC = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     set(ref(db, `/room-${roomId}/message-${lastMessage + 1}`), {
-      messages: response,
+      message: response,
       user: user,
     });
     setResponse("");

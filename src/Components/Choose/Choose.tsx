@@ -25,11 +25,11 @@ const Choose: React.FC = () => {
           </button>
         </div>
         <div>
-          {" "}
           <input
             type="text"
             value={user}
             onChange={(e) => setUser(e.target.value)}
+            required
           />
         </div>
         <button type="submit">Chat</button>
