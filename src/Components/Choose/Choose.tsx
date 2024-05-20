@@ -13,28 +13,44 @@ const Choose: React.FC = () => {
   };
   return (
     <div className="w-screen h-screen flex justify-center items-center flex-col">
-      <h1 className="content-center">Select your room</h1>
       <form onSubmit={useSubmit}>
-        <div className="flex flex-row">
-          <button type="button" onClick={(e) => setRoom(room + 1)}>
-            +
-          </button>
-          <p>{room}</p>
-          <button type="button" onClick={(e) => setRoom(room - 1)}>
-            -
-          </button>
-        </div>
         <div>
-          <label htmlFor="userInput">Username</label>
+          <label
+            htmlFor="roomNumber"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            Select your room
+          </label>
+          <input
+            id="roomNumber"
+            type="number"
+            value={room}
+            onChange={(e) => setRoom(Number(e.target.value))}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          ></input>
+        </div>
+        <div className="mt-4">
+          <label
+            htmlFor="userInput"
+            className="block text-gray-700 text-sm font-bold mb-2"
+          >
+            Username
+          </label>
           <input
             id="userInput"
             type="text"
             value={user}
             onChange={(e) => setUser(e.target.value)}
             required
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
-        <button type="submit">Chat</button>
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+        >
+          Chat
+        </button>
       </form>
     </div>
   );
