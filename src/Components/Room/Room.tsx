@@ -31,7 +31,7 @@ const Room: React.FC = () => {
   }, [messages]);
   const handleSubmit = (e) => {
     e.preventDefault();
-    set(ref(db, `/room-${roomId}/message-${lastMessage + 1}`), {
+    set(ref(db, `/room-${roomId}/${lastMessage + 1}`), {
       message: response,
       user: user,
     });
@@ -46,24 +46,32 @@ const Room: React.FC = () => {
         </div>
       ) : (
         <>
-          <div className="flex flex-col justify-between items-center">
-            <h1>{roomId}</h1>
-            <div>
-              {messages.map((message, index) => (
-                <div key={index}>
-                  <label>{message.user}</label>
-                  <p> {message.message}</p>
-                </div>
-              ))}
+          <div className="flex flex-col justify-between">
+            <h1 className="text-3xl font-bold mb-4 self-center">{roomId}</h1>
+            <div className="flex flex-col items-start">
+              <div className="flex flex-col gap-2">
+                {messages.map((message, index) => (
+                  <div key={index}>
+                    <label className="font-bold text-sm">{message.user}</label>
+                    <p className="text-gray-600 text-xl">{message.message}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-            <form onSubmit={handleSubmit} className="fixed bottom-5">
+
+            <form
+              onSubmit={handleSubmit}
+              className="fixed bottom-5 flex gap-2 w-full justify-center"
+            >
               <input
-                className="bg-black text-white"
+                className="bg-slate-800 text-white py-2 rounded"
                 onChange={(e) => setResponse(e.target.value)}
                 value={response}
               />
-              <button>
-                <span className="material-symbols-outlined">send</span>
+              <button className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-700">
+                <span className="material-symbols-outlined align-middle">
+                  send
+                </span>
               </button>
             </form>
           </div>
