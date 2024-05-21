@@ -41,40 +41,51 @@ const Room: React.FC = () => {
   return (
     <div className="w-screen h-screen">
       {isLoading ? (
-        <div className="flex justify-center items-center">
-          <div className="w-12 h-12 border-t-4 border-blue-500 rounded-full animate-spin"></div>{" "}
+        <div className="flex justify-center items-center bg-gray-100 min-h-screen">
+          <div className="w-12 h-12 border-t-4 border-blue-500 rounded-full animate-spin aling-self-center"></div>
         </div>
       ) : (
         <>
-          <div className="flex flex-col justify-between">
-            <h1 className="text-3xl font-bold mb-4 self-center">{roomId}</h1>
-            <div className="flex flex-col items-start">
-              <div className="flex flex-col gap-2">
+          <div className="flex flex-col justify-between min-h-screen bg-gray-100 p-4">
+            <h1 className="text-4xl font-bold mb-6 text-center text-blue-700">
+              {roomId}
+            </h1>
+            <div className="flex justify-center flex-grow">
+              <div className="flex flex-col gap-4 w-full max-w-3xl p-4 mb-16 bg-white shadow-lg rounded-lg">
                 {messages.map((message, index) => (
-                  <div key={index}>
-                    <label className="font-bold text-sm">{message.user}</label>
-                    <p className="text-gray-600 text-xl">{message.message}</p>
+                  <div
+                    key={index}
+                    className={`mb-4 p-3 rounded-lg ${
+                      message.user === user
+                        ? "bg-blue-100 items-end self-end ml-16"
+                        : "bg-gray-200 items-start self-start mr-16"
+                    }`}
+                  >
+                    <p className="font-bold text-sm mb-1 text-blue-800">
+                      {message.user}
+                    </p>
+                    <p className="text-gray-700 text-lg">{message.message}</p>
                   </div>
                 ))}
               </div>
             </div>
-
-            <form
-              onSubmit={handleSubmit}
-              className="fixed bottom-5 flex gap-2 w-full justify-center"
-            >
-              <input
-                className="bg-slate-800 text-white py-2 rounded"
-                onChange={(e) => setResponse(e.target.value)}
-                value={response}
-              />
-              <button className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-700">
-                <span className="material-symbols-outlined align-middle">
-                  send
-                </span>
-              </button>
-            </form>
           </div>
+          <form
+            onSubmit={handleSubmit}
+            className="fixed bottom-5 flex gap-2 w-full justify-center px-4"
+          >
+            <input
+              className="bg-white text-gray-900 py-2 px-4 rounded-lg shadow-md w-full max-w-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={(e) => setResponse(e.target.value)}
+              value={response}
+              placeholder="Type your message..."
+            />
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 shadow-md">
+              <span className="material-symbols-outlined align-middle">
+                send
+              </span>
+            </button>
+          </form>
         </>
       )}
     </div>

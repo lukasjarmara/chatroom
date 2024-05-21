@@ -12,9 +12,9 @@ const Choose: React.FC = () => {
     navigate(`/room/${room}?user=${user}`);
   };
   return (
-    <div className="w-screen h-screen flex justify-center items-center flex-col">
+    <div className="w-screen h-screen flex justify-center items-center flex-col bg-gray-100">
       <form onSubmit={useSubmit}>
-        <div className="bg-slate-100 py-10 px-6 shadow rounded">
+        <div className="bg-white py-10 px-6 shadow rounded">
           <div>
             <label
               htmlFor="roomNumber"
